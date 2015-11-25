@@ -3,12 +3,12 @@ package org.luisyang.framework.http.session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.luisyang.framework.http.servlet.annotation.Right;
 import org.luisyang.framework.http.session.authentication.AccesssDeniedException;
 import org.luisyang.framework.http.session.authentication.AuthenticationException;
 import org.luisyang.framework.http.session.authentication.PasswordAuthentication;
 import org.luisyang.framework.http.session.authentication.VerifyCodeAuthentication;
 
-import com.alibaba.druid.sql.visitor.functions.Right;
 
 public abstract interface Session {
 
@@ -66,33 +66,80 @@ public abstract interface Session {
 	public abstract String getVerifyCode(String key);
 
 	/**
-	 * 
-	 * @param paramString
-	 * @param paramVerifyCodeGenerator
+	 * 获得验证码
+	 * @param key
+	 * @param generator  验证码生成器
 	 * @return
 	 */
-	public abstract String getVerifyCode(String paramString, VerifyCodeGenerator );
+	public abstract String getVerifyCode(String key, VerifyCodeGenerator generator);
 
-	public abstract void invalidVerifyCode(String paramString);
+	/**
+	 * 验证验证码
+	 * @param paramString
+	 */
+	public abstract void invalidVerifyCode(String code);
 
-	public abstract void authenticateVerifyCode(VerifyCodeAuthentication paramVerifyCodeAuthentication)
+	/**
+	 * 认证验证码
+	 * @param authentication 验证码验证模型
+	 * @throws AuthenticationException
+	 */
+	public abstract void authenticateVerifyCode(VerifyCodeAuthentication authentication)
 			throws AuthenticationException;
 
-	public abstract int authenticatePassword(PasswordAuthentication paramPasswordAuthentication)
+	/**
+	 * 认证密码
+	 * @param authentication 密码认证模型
+	 * @return
+	 * @throws AuthenticationException
+	 */
+	public abstract int authenticatePassword(PasswordAuthentication authentication)
 			throws AuthenticationException;
 
-	public abstract int checkIn(HttpServletRequest paramHttpServletRequest,
-			HttpServletResponse paramHttpServletResponse, PasswordAuthentication paramPasswordAuthentication)
+	/**
+	 * 登录检查
+	 * @param request  请求
+	 * @param response  响应
+	 * @param authentication  密码认证模型
+	 * @return
+	 * @throws AuthenticationException
+	 */
+	public abstract int checkIn(HttpServletRequest request,
+			HttpServletResponse response, PasswordAuthentication authentication)
 					throws AuthenticationException;
 
-	public abstract void tryAccessResource(String paramString) throws AccesssDeniedException;
+	/**
+	 * 验证资源
+	 * @param resource
+	 * @throws AccesssDeniedException
+	 */
+	public abstract void tryAccessResource(String resource) throws AccesssDeniedException;
 
-	public abstract boolean isAccessableResource(String paramString);
+	/**
+	 * 是否为可使用资源
+	 * @param paramString
+	 * @return
+	 */
+	public abstract boolean isAccessableResource(String resource);
+	
+	/**
+	 * 是否为可使用资源
+	 * @param paramString
+	 * @return
+	 */
+	public abstract boolean isAccessableResource(Class<?> clazz);
+	/**
+	 * 是否为可使用资源
+	 * @param paramString
+	 * @return
+	 */
+	public abstract boolean isAccessableResource(Right right);
 
-	public abstract boolean isAccessableResource(Class<?> paramClass);
-
-	public abstract boolean isAccessableResource(Right paramRight);
-
-	public abstract void invalidate(HttpServletRequest paramHttpServletRequest,
-			HttpServletResponse paramHttpServletResponse);
+	/**
+	 * 设置无效时间
+	 * @param request
+	 * @param response
+	 */
+	public abstract void invalidate(HttpServletRequest request,
+			HttpServletResponse response);
 }
