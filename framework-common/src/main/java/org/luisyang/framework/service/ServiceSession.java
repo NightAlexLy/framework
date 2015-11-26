@@ -2,13 +2,12 @@ package org.luisyang.framework.service;
 
 import java.sql.Connection;
 
-import javax.management.ServiceNotFoundException;
-
 import org.luisyang.framework.http.servlet.Controller;
 import org.luisyang.framework.http.session.Session;
 import org.luisyang.framework.resource.Prompter;
 import org.luisyang.framework.resource.ResourceInvalidatedException;
 import org.luisyang.framework.resource.ResourceNotFoundException;
+import org.luisyang.framework.service.exception.ServiceNotFoundException;
 
 /**
  * 服务会话
