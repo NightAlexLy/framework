@@ -12,5 +12,7 @@ public enum PromptLevel {
 	private PromptLevel() {
 	}
 
-	//public abstract String parameterKey();
+	public String parameterKey() {
+		return this.name();
+	}
 }

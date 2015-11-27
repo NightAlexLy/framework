@@ -1,4 +1,4 @@
-package org.framework.config.achieve;
+package org.luisyang.framework.config.achieve;
 
 import org.luisyang.framework.config.ConfigureProvider;
 import org.luisyang.framework.resource.ResourceProvider;

@@ -1,4 +1,4 @@
-package org.framework.config.achieve.service;
+package org.luisyang.framework.config.achieve.service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
