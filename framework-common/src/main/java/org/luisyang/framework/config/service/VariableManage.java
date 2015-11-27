@@ -2,6 +2,8 @@ package org.luisyang.framework.config.service;
 
 import org.luisyang.framework.config.entity.VariableBean;
 import org.luisyang.framework.service.Service;
+import org.luisyang.framework.service.query.Paging;
+import org.luisyang.framework.service.query.PagingResult;
 
 public  abstract interface VariableManage extends Service{
 	
@@ -22,9 +24,16 @@ public  abstract interface VariableManage extends Service{
 	  */
 	 public abstract void setProperty(String key, String newValue)
 			    throws Throwable;
-			  
-	/* public abstract PagingResult<VariableBean> search(VariableQuery paramVariableQuery, Paging paramPaging)
-			    throws Throwable;*/
+	
+	 /**
+	  * 根据条件搜索指定的变量模型
+	  * @param paramVariableQuery
+	  * @param paramPaging
+	  * @return
+	  * @throws Throwable
+	  */
+	public abstract PagingResult<VariableBean> search(VariableQuery paramVariableQuery, Paging paramPaging)
+			    throws Throwable;
 	 
 	 /**
 	  * 获得变量模型

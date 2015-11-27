@@ -22,5 +22,6 @@
   </dependencies>
   <modules>
     <module>framework-common</module>
+    <module>framework-config</module>
   </modules>
 </project>

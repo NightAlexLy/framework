@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>framework-config</artifactId>
+  <parent>
+    <groupId>org.luisyang.framework</groupId>
+    <artifactId>framework</artifactId>
+    <version>0.0.1</version>
+  </parent>
+  <dependencies>
+		<dependency>
+			<groupId>org.luisyang.framework</groupId>
+			<artifactId>framework-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+	<distributionManagement>
+		<repository>
+			<id>framework-achieve-releases</id>
+			<url>http://nexus.dimeng.net/content/repositories/framework-achieve-releases/</url>
+			<uniqueVersion>true</uniqueVersion>
+		</repository>
+		<snapshotRepository>
+			<id>framework-achieve-snapshots</id>
+			<url>http://nexus.dimeng.net/content/repositories/framework-achieve-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+</project>

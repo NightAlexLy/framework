@@ -1,6 +1,8 @@
 package org.luisyang.framework.config.entity;
 
 import java.io.Serializable;
+
+import org.luisyang.framework.http.entity.RightBean;
 /**
  * 基本模型接口
  * @author luisYang
@@ -25,6 +27,10 @@ public abstract interface ModuleBean extends Serializable {
 	 */
 	public abstract String getDescription();
 	  
-	//public abstract RightBean[] getRightBeans();
+	/**
+	 * 获得模块权限
+	 * @return
+	 */
+	public abstract RightBean[] getRightBeans();
 	
 }
